@@ -1,0 +1,28 @@
+@use 'variables' as *;
+@use 'sass:map';
+
+@mixin typography($size: base, $weight: regular, $line-height: 1) {
+    font-size: if(
+        map.has-key($font-sizes, $size),
+        map.get($font-sizes, $size),
+        $size
+    );
+    font-weight: map.get($font-weights, $weight);
+    line-height: $line-height;
+}
+
+@each $size, $value in $font-sizes {
+    @each $weight, $weight-value in $font-weights {
+        .text-#{$size}-#{$weight} {
+            @include typography($size, $weight);
+        }
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
