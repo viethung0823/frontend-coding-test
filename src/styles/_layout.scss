@@ -1,0 +1,87 @@
+@use 'sass:map';
+@use 'variables' as *;
+@use 'spacing' as *;
+
+@mixin d-flex {
+    display: flex;
+}
+
+.d-flex {
+    @include d-flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-start {
+    align-items: start;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == 'mobile' {
+        @media (max-width: map.get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @media (min-width: map.get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+}
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include respond-to('mobile') {
+        padding-left: map.get($spacings, 10);
+        padding-right: map.get($spacings, 10);
+    }
+
+    @include respond-to('desktop') {
+        padding-left: map.get($spacings, 40);
+        padding-right: map.get($spacings, 40);
+    }
+}
+
+.hide-on-mobile {
+    @include respond-to('mobile') {
+        display: none;
+    }
+}
+
+.hide-on-desktop {
+    @include respond-to('desktop') {
+        display: none;
+    }
+}
+
+.pos-relative {
+    position: relative !important;
+}

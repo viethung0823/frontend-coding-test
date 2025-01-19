@@ -1,0 +1,32 @@
+// naming matches with figma token
+
+$colors: (
+    'white': #fff,
+    'base-card-100': #f9fafb,
+    'content-primary': #111827,
+    'gray-200': #f2f2f2,
+    'gray-800': #1f2937,
+    'neutral': #d7dde4,
+    'bg-default': #030712,
+    'bg-neutral': #2b3440,
+);
+
+$font-sizes: (
+    xs: 12px,
+    sm: 14px,
+    lg: 18px,
+);
+
+$font-weights: (
+    light: 300,
+    regular: 400,
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+);
+
+$breakpoints: (
+    mobile: 540px,
+    desktop: 900px,
+);

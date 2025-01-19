@@ -1,0 +1,107 @@
+@use 'sass:map';
+@use './typography' as *;
+@use './variables' as *;
+@use './spacing' as *;
+@use './layout' as *;
+
+.btn {
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: map.get($spacings, 5);
+
+    & > .btn-icon > img {
+        position: relative !important;
+    }
+
+    &.btn-square {
+        border-radius: 8px;
+    }
+
+    &.btn-circle {
+        border-radius: 16px;
+    }
+
+    &.btn-xs {
+        @include typography(xs, semibold);
+        @include p-v(3);
+        @include p-h(16);
+        & > .btn-icon {
+            width: map.get($spacings, 5);
+        }
+        &.btn-transparent,
+        &.btn-icon {
+            @include p(3);
+        }
+    }
+
+    &.btn-sm {
+        @include typography(sm, semibold);
+        @include p-v(4);
+        @include p-h(16);
+        & > .btn-icon {
+            width: map.get($spacings, 7);
+        }
+        &.btn-transparent,
+        &.btn-icon {
+            @include p(4);
+        }
+    }
+
+    &.btn-md {
+        @include typography(sm, semibold);
+        @include p-v(8);
+        @include p-h(16);
+        & > .btn-icon {
+            width: map.get($spacings, 8);
+        }
+        &.btn-transparent,
+        &.btn-icon {
+            @include p(8);
+        }
+    }
+
+    &.btn-lg {
+        @include typography(lg, semibold);
+        @include p-v(12);
+        @include p-h(16);
+        & > .btn-icon {
+            width: map.get($spacings, 10);
+        }
+        &.btn-transparent,
+        &.btn-icon {
+            @include p(12);
+        }
+    }
+
+    &.btn-primary {
+        color: map.get($colors, 'base-card-100');
+        &.btn-outline {
+            outline: 1px solid map.get($colors, 'bg-default');
+        }
+        &.btn-fill {
+            background-color: map.get($colors, 'bg-default');
+        }
+    }
+
+    &.btn-default {
+        color: map.get($colors, 'gray-800');
+        &.btn-outline {
+            outline: 1px solid map.get($colors, 'gray-200');
+        }
+        &.btn-fill {
+            background-color: map.get($colors, 'gray-200');
+        }
+    }
+
+    &.btn-transparent,
+    &.btn-icon {
+        color: map.get($colors, 'gray-800');
+        background-color: unset;
+        &.btn-outline {
+            outline: 1px solid map.get($colors, '#000');
+        }
+    }
+}

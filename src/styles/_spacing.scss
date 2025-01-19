@@ -1,0 +1,69 @@
+@use 'sass:map';
+
+$base-spacing-unit: 2px;
+
+$spacings: ();
+@for $i from 1 through 100 {
+    $spacings: map.merge(
+        $spacings,
+        (
+            $i: $i * $base-spacing-unit,
+        )
+    );
+}
+
+// Mixins
+@mixin m($i) {
+    margin: map.get($spacings, $i);
+}
+
+@mixin p($i) {
+    padding: map.get($spacings, $i);
+}
+
+@mixin p-h($i) {
+    padding-left: map.get($spacings, $i);
+    padding-right: map.get($spacings, $i);
+}
+
+@mixin p-v($i) {
+    padding-top: map.get($spacings, $i);
+    padding-bottom: map.get($spacings, $i);
+}
+
+@mixin m-t($i) {
+    margin-top: map.get($spacings, $i);
+}
+
+@mixin m-v($i) {
+    margin-top: map.get($spacings, $i);
+    margin-bottom: map.get($spacings, $i);
+}
+
+// Utility Classes
+@for $i from 1 through 100 {
+    .m-#{$i} {
+        margin: map.get($spacings, $i);
+    }
+    .m-t-#{$i} {
+        margin-top: map.get($spacings, $i);
+    }
+    .m-v-#{$i} {
+        margin-top: map.get($spacings, $i);
+        margin-bottom: map.get($spacings, $i);
+    }
+    .p-#{$i} {
+        padding: map.get($spacings, $i);
+    }
+    .p-h-#{$i} {
+        padding-left: map.get($spacings, $i);
+        padding-right: map.get($spacings, $i);
+    }
+    .p-v-#{$i} {
+        padding-top: map.get($spacings, $i);
+        padding-bottom: map.get($spacings, $i);
+    }
+    .g-#{$i} {
+        gap: map.get($spacings, $i);
+    }
+}
